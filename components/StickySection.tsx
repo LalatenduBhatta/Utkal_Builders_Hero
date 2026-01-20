@@ -9,7 +9,7 @@ interface StickySectionProps {
 
 export default function StickySection({ children, className = "" }: StickySectionProps) {
     return (
-        <div className={`relative h-[500vh] ${className}`}>
+        <div className={`relative ${className}`}>
             <div className="sticky top-0 h-screen w-full overflow-hidden">
                 {children}
             </div>
