@@ -1,13 +1,25 @@
 "use client";
 
 import { useScroll, MotionValue } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import ImageSequence from "@/components/ImageSequence";
 import StickySection from "@/components/StickySection";
 import OverlayText from "@/components/OverlayText";
 
 export default function Home() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkIfMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    checkIfMobile();
+    window.addEventListener("resize", checkIfMobile);
+    return () => window.removeEventListener("resize", checkIfMobile);
+  }, []);
+
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"],
@@ -15,7 +27,7 @@ export default function Home() {
 
   return (
     <main ref={containerRef} className="relative bg-white">
-      <StickySection className="h-[600vh]">
+      <StickySection className={isMobile ? "h-[150vh]" : "h-[300vh]"}>
         <ImageSequence
           progress={scrollYProgress}
           folderPath="/Hero"
