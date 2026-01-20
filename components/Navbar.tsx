@@ -19,39 +19,40 @@ export default function Navbar() {
     return (
         <nav
             className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out ${scrolled || isOpen
-                    ? "bg-white/90 backdrop-blur-md py-4 border-b border-gray-200"
-                    : "bg-transparent py-6"
+                    ? "bg-white/90 backdrop-blur-md py-3 border-b border-gray-200"
+                    : "bg-transparent py-4"
                 }`}
         >
-            <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-                <Link href="/" className={`font-bold text-xl tracking-tight z-50 relative ${(scrolled || isOpen) ? "text-brand-dark" : "text-white mix-blend-difference"
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 flex justify-between items-center">
+                <Link href="/" className={`font-bold text-lg sm:text-xl tracking-tight z-50 relative ${(scrolled || isOpen) ? "text-brand-dark" : "text-white mix-blend-difference"
                     }`}>
                     UTKAL BUILDERS
                 </Link>
 
                 {/* Desktop Menu */}
-                <div className="hidden md:flex space-x-8 items-center">
+                <div className="hidden lg:flex items-center gap-6 xl:gap-8">
                     <NavLink href="/" label="Home" active={false} scrolled={scrolled} />
                     <NavLink href="/projects" label="Projects" active={false} scrolled={scrolled} />
                     <NavLink href="/about" label="About" active={false} scrolled={scrolled} />
                     <NavLink href="/media" label="Media" active={false} scrolled={scrolled} />
                     <NavLink href="/contact" label="Contact" active={false} scrolled={scrolled} />
 
-                    <button className="px-5 py-2 rounded-full bg-brand text-white text-sm font-medium hover:bg-brand-dark transition-colors">
+                    <button className="px-4 py-2 rounded-full bg-brand text-white text-sm font-medium hover:bg-brand-dark transition-colors whitespace-nowrap">
                         Enquire Now
                     </button>
                 </div>
 
                 {/* Mobile Toggle */}
                 <button
-                    className="md:hidden z-50 relative focus:outline-none"
+                    className="lg:hidden z-50 relative focus:outline-none p-2"
                     onClick={() => setIsOpen(!isOpen)}
+                    aria-label="Toggle menu"
                 >
-                    <div className={`w-6 h-0.5 mb-1.5 transition-all ${(scrolled || isOpen) ? "bg-gray-900" : "bg-white"
+                    <div className={`w-6 h-0.5 mb-1.5 transition-all ${isOpen ? "bg-white" : (scrolled ? "bg-gray-900" : "bg-white")
                         } ${isOpen ? "rotate-45 translate-y-2" : ""}`} />
-                    <div className={`w-6 h-0.5 mb-1.5 transition-all ${(scrolled || isOpen) ? "bg-gray-900" : "bg-white"
+                    <div className={`w-6 h-0.5 mb-1.5 transition-all ${isOpen ? "bg-white" : (scrolled ? "bg-gray-900" : "bg-white")
                         } ${isOpen ? "opacity-0" : "opacity-100"}`} />
-                    <div className={`w-6 h-0.5 transition-all ${(scrolled || isOpen) ? "bg-gray-900" : "bg-white"
+                    <div className={`w-6 h-0.5 transition-all ${isOpen ? "bg-white" : (scrolled ? "bg-gray-900" : "bg-white")
                         } ${isOpen ? "-rotate-45 -translate-y-2" : ""}`} />
                 </button>
 
@@ -63,9 +64,9 @@ export default function Navbar() {
                             animate={{ opacity: 1, x: 0 }}
                             exit={{ opacity: 0, x: "100%" }}
                             transition={{ type: "spring", damping: 25, stiffness: 200 }}
-                            className="fixed inset-0 bg-white/95 backdrop-blur-xl z-40 flex flex-col items-start justify-center space-y-6 md:hidden px-10"
+                            className="fixed inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-brand-dark backdrop-blur-xl z-40 flex flex-col items-start justify-center lg:hidden px-8 sm:px-12"
                         >
-                            <div className="flex flex-col space-y-6 w-full">
+                            <div className="flex flex-col space-y-5 sm:space-y-6 w-full max-w-md">
                                 <MobileNavLink href="/" label="Home" setIsOpen={setIsOpen} delay={0.1} />
                                 <MobileNavLink href="/projects" label="Projects" setIsOpen={setIsOpen} delay={0.2} />
                                 <MobileNavLink href="/about" label="About" setIsOpen={setIsOpen} delay={0.3} />
@@ -76,9 +77,9 @@ export default function Navbar() {
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ delay: 0.6 }}
-                                    className="pt-6"
+                                    className="pt-4 sm:pt-6"
                                 >
-                                    <button className="w-full px-6 py-4 rounded-xl bg-brand text-white text-lg font-bold shadow-lg hover:bg-brand-dark transition-all">
+                                    <button className="w-full px-6 py-3 sm:py-4 rounded-xl bg-white text-brand-dark text-base sm:text-lg font-bold shadow-2xl hover:bg-gray-100 transition-all">
                                         Enquire Now
                                     </button>
                                 </motion.div>
@@ -95,7 +96,7 @@ function NavLink({ href, label, active, scrolled }: { href: string; label: strin
     return (
         <Link
             href={href}
-            className={`relative text-sm font-medium transition-colors ${scrolled ? "text-gray-800 hover:text-brand" : "text-white/90 hover:text-white mix-blend-difference"
+            className={`relative text-sm font-medium transition-colors whitespace-nowrap ${scrolled ? "text-gray-800 hover:text-brand" : "text-white/90 hover:text-white mix-blend-difference"
                 }`}
         >
             {label}
@@ -116,7 +117,7 @@ function MobileNavLink({ href, label, setIsOpen, delay }: { href: string; label:
             <Link
                 href={href}
                 onClick={() => setIsOpen(false)}
-                className="text-4xl font-bold text-gray-900 hover:text-brand transition-colors tracking-tight block"
+                className="text-3xl sm:text-4xl font-bold text-white hover:text-brand transition-colors tracking-tight block"
             >
                 {label}
             </Link>
