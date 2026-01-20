@@ -19,8 +19,8 @@ export default function Navbar() {
     return (
         <nav
             className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out ${scrolled || isOpen
-                    ? "bg-white/90 backdrop-blur-md py-3 border-b border-gray-200"
-                    : "bg-transparent py-4"
+                ? "bg-white/90 backdrop-blur-md py-3 border-b border-gray-200"
+                : "bg-transparent py-4"
                 }`}
         >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 flex justify-between items-center">
@@ -33,13 +33,13 @@ export default function Navbar() {
                 <div className="hidden lg:flex items-center gap-6 xl:gap-8">
                     <NavLink href="/" label="Home" active={false} scrolled={scrolled} />
                     <NavLink href="/projects" label="Projects" active={false} scrolled={scrolled} />
-                    <NavLink href="/about" label="About" active={false} scrolled={scrolled} />
-                    <NavLink href="/media" label="Media" active={false} scrolled={scrolled} />
-                    <NavLink href="/contact" label="Contact" active={false} scrolled={scrolled} />
+                    {/* <NavLink href="/about" label="About" active={false} scrolled={scrolled} /> */}
+                    {/* <NavLink href="/media" label="Media" active={false} scrolled={scrolled} /> */}
+                    {/* <NavLink href="/contact" label="Contact" active={false} scrolled={scrolled} /> */}
 
-                    <button className="px-4 py-2 rounded-full bg-brand text-white text-sm font-medium hover:bg-brand-dark transition-colors whitespace-nowrap">
+                    {/* <button className="px-4 py-2 rounded-full bg-brand text-white text-sm font-medium hover:bg-brand-dark transition-colors whitespace-nowrap">
                         Enquire Now
-                    </button>
+                    </button> */}
                 </div>
 
                 {/* Mobile Toggle */}
@@ -64,16 +64,16 @@ export default function Navbar() {
                             animate={{ opacity: 1, x: 0 }}
                             exit={{ opacity: 0, x: "100%" }}
                             transition={{ type: "spring", damping: 25, stiffness: 200 }}
-                            className="fixed inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-brand-dark backdrop-blur-xl z-40 flex flex-col items-start justify-center lg:hidden px-8 sm:px-12"
+                            className="fixed inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-brand-dark backdrop-blur-xl z-40 flex flex-col items-start justify-center lg:hidden px-8 sm:px-12 top-[100px]"
                         >
                             <div className="flex flex-col space-y-5 sm:space-y-6 w-full max-w-md">
                                 <MobileNavLink href="/" label="Home" setIsOpen={setIsOpen} delay={0.1} />
                                 <MobileNavLink href="/projects" label="Projects" setIsOpen={setIsOpen} delay={0.2} />
-                                <MobileNavLink href="/about" label="About" setIsOpen={setIsOpen} delay={0.3} />
-                                <MobileNavLink href="/media" label="Media" setIsOpen={setIsOpen} delay={0.4} />
-                                <MobileNavLink href="/contact" label="Contact" setIsOpen={setIsOpen} delay={0.5} />
+                                {/* <MobileNavLink href="/about" label="About" setIsOpen={setIsOpen} delay={0.3} /> */}
+                                {/* <MobileNavLink href="/media" label="Media" setIsOpen={setIsOpen} delay={0.4} /> */}
+                                {/* <MobileNavLink href="/contact" label="Contact" setIsOpen={setIsOpen} delay={0.5} /> */}
 
-                                <motion.div
+                                {/* <motion.div
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ delay: 0.6 }}
@@ -82,7 +82,7 @@ export default function Navbar() {
                                     <button className="w-full px-6 py-3 sm:py-4 rounded-xl bg-white text-brand-dark text-base sm:text-lg font-bold shadow-2xl hover:bg-gray-100 transition-all">
                                         Enquire Now
                                     </button>
-                                </motion.div>
+                                </motion.div> */}
                             </div>
                         </motion.div>
                     )}
